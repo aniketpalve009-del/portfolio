@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AP Cinematics</title>
+
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* Global Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: #0e0e0e;
+      color: #fff;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(0,0,0,0.85);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 60px;
+      z-index: 1000;
+      backdrop-filter: blur(8px);
+    }
+
+    header h1 {
+      font-size: 1.5em;
+      color: #e0b12c;
+      letter-spacing: 1px;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 25px;
+      list-style: none;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      transition: 0.3s;
+      font-weight: 500;
+    }
+
+    nav ul li a:hover {
+      color: #e0b12c;
+    }
+
+    .search-bar {
+      display: flex;
+      align-items: center;
+      background: #1a1a1a;
+      padding: 6px 12px;
+      border-radius: 25px;
+      border: 1px solid #333;
+    }
+
+    .search-bar input {
+      background: transparent;
+      border: none;
+      color: #fff;
+      outline: none;
+      width: 150px;
+      font-size: 14px;
+    }
+
+    .search-bar i {
+      color: #e0b12c;
+    }
+
+    section {
+      padding: 100px 60px;
+      min-height: 100vh;
+    }
+
+    /* Hero Section */
+    #home {
+      background: url('https://images.unsplash.com/photo-1499084732479-de2c02d45fc4?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+    }
+
+    #home h2 {
+      font-size: 3em;
+      color: #fff;
+      text-shadow: 0 0 15px #000;
+    }
+
+    #home p {
+      margin-top: 10px;
+      font-size: 1.2em;
+      color: #e0b12c;
+    }
+
+    /* About Section */
+    #about {
+      background: #111;
+    }
+
+    #about h2 {
+      color: #e0b12c;
+      margin-bottom: 20px;
+    }
+
+    #about p {
+      max-width: 700px;
+      line-height: 1.6;
+      color: #ccc;
+    }
+
+    /* Portfolio */
+    #portfolio {
+      background: #0d0d0d;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
+      margin-top: 30px;
+    }
+
+    .gallery img {
+      width: 100%;
+      border-radius: 8px;
+      transition: 0.3s;
+      cursor: pointer;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+      filter: brightness(1.1);
+    }
+
+    /* Services */
+    #services {
+      background: #111;
+    }
+
+    .services-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-top: 30px;
+    }
+
+    .service-box {
+      background: #1a1a1a;
+      padding: 25px;
+      border-radius: 10px;
+      text-align: center;
+      border: 1px solid #333;
+      transition: 0.3s;
+    }
+
+    .service-box:hover {
+      transform: translateY(-5px);
+      border-color: #e0b12c;
+    }
+
+    .service-box i {
+      font-size: 2em;
+      color: #e0b12c;
+      margin-bottom: 15px;
+    }
+
+    /* Testimonials */
+    #testimonials {
+      background: #0d0d0d;
+      text-align: center;
+    }
+
+    .testimonial {
+      max-width: 700px;
+      margin: 20px auto;
+      background: #1a1a1a;
+      padding: 20px;
+      border-radius: 10px;
+      border: 1px solid #333;
+    }
+
+    .testimonial p {
+      color: #ccc;
+      font-style: italic;
+    }
+
+    /* Contact */
+    #contact {
+      background: #111;
+    }
+
+    form {
+      max-width: 600px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    input, textarea {
+      padding: 12px;
+      border: none;
+      border-radius: 5px;
+      background: #1a1a1a;
+      color: #fff;
+      border: 1px solid #333;
+    }
+
+    button {
+      padding: 12px;
+      border: none;
+      border-radius: 5px;
+      background: #e0b12c;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #c69a24;
+    }
+
+    .contact-info {
+      text-align: center;
+      margin-top: 25px;
+      color: #ccc;
+    }
+
+    .contact-info a {
+      color: #e0b12c;
+      text-decoration: none;
+    }
+
+    .contact-info a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      background: #0a0a0a;
+      text-align: center;
+      padding: 25px;
+      border-top: 1px solid #222;
+      font-size: 14px;
+      color: #aaa;
+    }
+
+    footer a {
+      color: #e0b12c;
+      text-decoration: none;
+      margin: 0 8px;
+    }
+
+    footer a:hover {
+      color: #fff;
+    }
+
+    .social-icons {
+      margin-top: 10px;
+    }
+
+    .social-icons a {
+      color: #e0b12c;
+      font-size: 1.4em;
+      margin: 0 10px;
+      transition: 0.3s;
+    }
+
+    .social-icons a:hover {
+      color: #fff;
+    }
+
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>AP Cinematics</h1>
+    <nav>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="search-bar">
+      <input type="text" placeholder="Search...">
+      <i class="fas fa-search"></i>
+    </div>
+  </header>
+
+  <!-- Home -->
+  <section id="home">
+    <h2>Capturing Stories in Every Frame</h2>
+    <p>Wedding • Cinematic • Portrait • Product • Events</p>
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <h2>About Us</h2>
+    <p>
+      Welcome to <strong>AP Cinematics</strong> — a creative photography studio led by 
+      <strong>Aniket Palve</strong>. We specialize in cinematic photography that transforms 
+      your precious moments into timeless visual stories. Whether it's weddings, portraits, or 
+      product shoots, we blend modern minimalism with a bold cinematic style to deliver 
+      stunning results.
+    </p>
+  </section>
+
+  <!-- Portfolio -->
+  <section id="portfolio">
+    <h2>Our Portfolio</h2>
+    <div class="gallery">
+      <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=600&q=80" alt="Portrait">
+      <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=600&q=80" alt="Wedding">
+      <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=600&q=80" alt="Product">
+      <img src="https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?auto=format&fit=crop&w=600&q=80" alt="Event">
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services">
+    <h2>Our Services</h2>
+    <div class="services-container">
+      <div class="service-box">
+        <i class="fas fa-heart"></i>
+        <h3>Wedding Photography</h3>
+      </div>
+      <div class="service-box">
+        <i class="fas fa-video"></i>
+        <h3>Cinematic Shoots</h3>
+      </div>
+      <div class="service-box">
+        <i class="fas fa-box"></i>
+        <h3>Product Photography</h3>
+      </div>
+      <div class="service-box">
+        <i class="fas fa-user"></i>
+        <h3>Portraits</h3>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section id="testimonials">
+    <h2>What Our Clients Say</h2>
+    <div class="testimonial">
+      <p>"Absolutely stunning photos! The cinematic tone made our wedding look like a movie."</p>
+      <strong>- Priya & Rohan</strong>
+    </div>
+    <div class="testimonial">
+      <p>"Professional, creative, and passionate — highly recommend for any event!"</p>
+      <strong>- Sneha K.</strong>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <form>
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea rows="5" placeholder="Your Message"></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+
+    <div class="contact-info">
+      <p><i class="fas fa-user"></i> <strong>Owner:</strong> Aniket Palve</p>
+      <p><i class="fas fa-phone"></i> <strong>Contact:</strong> +91 92846 95693</p>
+      <p><i class="fas fa-envelope"></i> <strong>Email:</strong> 
+        <a href="mailto:aniketpalve07@gmail.com">aniketpalve07@gmail.com</a>
+      </p>
+      <p><i class="fab fa-instagram"></i> 
+        <strong>Instagram:</strong> 
+        <a href="https://www.instagram.com/ap_cinematics_?utm_source=qr&igsh=bmJ0NjhkcTF3YzFo" target="_blank">
+          @ap_cinematics_
+        </a>
+      </p>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 AP Cinematics | Designed by <strong>Aniket Palve</strong>
+    <div class="social-icons">
+      <a href="mailto:aniketpalve07@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+      <a href="tel:+919284695693" title="Call"><i class="fas fa-phone"></i></a>
+      <a href="https://www.instagram.com/ap_cinematics_?utm_source=qr&igsh=bmJ0NjhkcTF3YzFo" title="Instagram" target="_blank">
+        <i class="fab fa-instagram"></i>
+      </a>
+    </div>
+  </footer>
+
+</body>
+</html>
